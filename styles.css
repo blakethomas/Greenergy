@@ -37,3 +37,14 @@
   color: rgb(106, 66, 52);
   padding-right: 10px;
 }
+
+.info-button {
+  display: inline-block;
+  position: absolute;
+  top: 180px;
+  left: 37.5%;
+}
+
+.disappear {
+  display: none;
+}

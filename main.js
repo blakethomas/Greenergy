@@ -5,7 +5,7 @@ var products = [
   imgSrc:'https://images.pexels.com/photos/34085/pexels-photo.jpg?h=350&auto=compress&cs=tinysrgb',
   details: {
     origin:'Addis Abada, Ethiopia',
-    description: 'An exotic blend from the African rainforest. Has a strong kick and keeps you up all morining.',
+    description: 'Has a strong kick and keeps you up all morining.',
     aroma:'Chesnuts, Dark Chocolate, Tobacco',
     ammount: '1 lbs'
   },
@@ -195,8 +195,7 @@ function renderProduct(product){
   $info.classList.add('disappear', 'info-button', 'btn', 'btn-default')
   $info.textContent = btnName
   $info.addEventListener('click', function(){
-    document.body.classList.add('filter')
-    $thumbnail.appendChild(renderDetails(product))
+    document.body.appendChild(renderDetails(product))
   })
 
   var $name = document.createElement('p')

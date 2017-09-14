@@ -48,3 +48,27 @@
 .disappear {
   display: none;
 }
+
+table {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.exit {
+  position: relative;
+  text-align: center;
+  background: white;
+  bottom: 300px;
+  border: 1px solid black;
+  padding: 5px;
+  box-shadow: 10px 5px 5px black;
+}

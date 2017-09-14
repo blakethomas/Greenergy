@@ -46,11 +46,14 @@ var products = [
 },
 ]
 
+var btnName = "View Details"
+
 var $container = document.createElement('div')
 $container.classList.add('container')
 
 var $row = document.createElement('row')
 $row.classList.add('row')
+
 
 function renderProduct(product){
   var $product = document.createElement('div')
@@ -58,6 +61,12 @@ function renderProduct(product){
 
   var $thumbnail = document.createElement('div')
   $thumbnail.classList.add('thumbnail')
+  $thumbnail.addEventListener('mouseenter', function(){
+    $info.classList.remove('disappear')
+  })
+  $thumbnail.addEventListener('mouseout', function(){
+    $info.classList.add('disappear')
+  })
 
   var $img = document.createElement('img')
   $img.classList.add('picture-target')
@@ -65,6 +74,7 @@ function renderProduct(product){
 
   var $info = document.createElement('button')
   $info.classList.add('disappear', 'info-button', 'btn', 'btn-default')
+  $info.textContent = btnName
 
   var $name = document.createElement('p')
   $name.classList.add('product')

@@ -37,3 +37,45 @@
   color: rgb(106, 66, 52);
   padding-right: 10px;
 }
+
+.info-button {
+  display: inline-block;
+  position: absolute;
+  top: 180px;
+  left: 37.5%;
+}
+
+.disappear {
+  display: none;
+}
+
+table {
+  position: relative;
+  border: 1px solid black;
+  margin: 0 auto;
+  padding: 5px;
+  text-align: center;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.exit {
+  position: absolute;
+  bottom: 1000px;
+  left: 20%;
+  width: 60%;
+  text-align: center;
+  background: white;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 10px 5px 5px black;
+}

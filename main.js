@@ -117,6 +117,12 @@ $container.classList.add('container')
 var $row = document.createElement('row')
 $row.classList.add('row')
 
+var cart = []
+
+var counter = 0
+
+var $cartIcon = document.querySelector(".cart")
+
 /* returns the table of info for each product description*/
 function renderDetails(product){
   var $exit = document.createElement('div')
@@ -134,7 +140,11 @@ function renderDetails(product){
   var $addButton = document.createElement('button')
   $addButton.classList.add('btn', 'btn-default', 'add-button')
   $addButton.textContent = 'Add To Cart'
-
+  $addButton.addEventListener('click', function(){
+    cart.push(product)
+    counter ++
+    $cartIcon.textContent =  '      ' + counter
+  })
 
   var $details = document.createElement('div',)
   $details.classList.add('card-body')

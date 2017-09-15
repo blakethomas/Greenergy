@@ -7,7 +7,8 @@ var products = [
     origin:'Addis Abada, Ethiopia',
     description: 'Has a strong kick and keeps you up all morining.',
     aroma:'Chesnuts, Dark Chocolate, Tobacco',
-    ammount: '1 lbs'
+    ammount: '1 lbs',
+    price:12.95
   },
 },
 {
@@ -18,7 +19,8 @@ var products = [
     origin:'Bogota, Colomiba',
     description: 'A mild, well balanced bean for all types of cofffee lovers.',
     aroma:'Caramel, Nuts, Butter',
-    ammount: '1 lbs'
+    ammount: '1 lbs',
+    price: 15.95
   }
 },
 {
@@ -30,6 +32,7 @@ var products = [
     description: 'A machine made to satisfy all your espresso needs.',
     aroma:'N/A',
     ammount: '1 Unit',
+    price:1999.95
   }
 },
 {
@@ -41,6 +44,7 @@ var products = [
     description: 'A bold, caffeine filled bean that is for experienced coffee drinkers',
     aroma:'Toffee, Hazelnut',
     ammount: '1 lbs',
+    price:12.95
   }
 },
 {
@@ -48,10 +52,11 @@ var products = [
   price:14.95,
   imgSrc:'https://images.pexels.com/photos/2059/restaurant-red-beans-coffee.jpg?h=350&auto=compress&cs=tinysrgb',
   details: {
-   origin:'Kawaii, Hawaii',
-   description: 'A kona blend for those who love that traditional Hawaiian taste.',
-   aroma:'Caramel, Cashew',
-   ammount: '1 lbs',
+    origin:'Kawaii, Hawaii',
+    description: 'A kona blend for those who love that traditional Hawaiian taste.',
+    aroma:'Caramel, Cashew',
+    ammount: '1 lbs',
+    price:14.95
   }
 },
 {
@@ -63,6 +68,7 @@ var products = [
     description: 'A delicious bean, complimented by perfect herbal flavor notes.',
     aroma:'Herbal',
     ammount: '1 lbs',
+    price:16.95
   }
 },
 {
@@ -74,6 +80,7 @@ var products = [
     description: 'A machine made for the ultimate cup of joe.',
     aroma:'N/A',
     ammount: '1 Unit',
+    price:99.95
   }
 },
 {
@@ -85,6 +92,7 @@ var products = [
     description: 'A contraption for making coffee with cold water.',
     aroma:'N/A',
     ammount: '1 Unit',
+    price:49.95
   }
 },
 {
@@ -96,6 +104,7 @@ var products = [
     description: 'A machine made that does all the work for you.',
     aroma:'N/A',
     ammount: '1 Unit',
+    price:399.95
   }
 },
 ]
@@ -112,7 +121,7 @@ $row.classList.add('row')
 function renderDetails(product){
   var $exit = document.createElement('div')
 
-  $exit.classList.add('exit')
+  $exit.classList.add('exit', 'card')
   $exit.addEventListener('click', function(){
     $container.classList.remove('filter')
     $exit.classList.remove('exit')
@@ -127,7 +136,12 @@ function renderDetails(product){
   $addButton.textContent = 'Add To Cart'
 
 
-  var $details = document.createElement('div')
+  var $details = document.createElement('div',)
+  $details.classList.add('card-body')
+
+  var $title = document.createElement('h2')
+  $title.textContent = product.name
+  $title.classList.add('card-title')
 
   var $table = document.createElement('table')
 
@@ -163,8 +177,14 @@ function renderDetails(product){
   var $ammountContent = document.createElement('td')
   $ammountContent.textContent = product.details.ammount
 
+  var $price = document.createElement('p')
+  $price.textContent =  'Price: ' + product.price
+  $price.classList.add('details-price')
+
   $exit.appendChild($exitButton)
+  $exit.appendChild($title)
   $exit.appendChild($details)
+  $exit.appendChild($price)
   $exit.appendChild($addButton)
   $details.appendChild($table)
   $table.appendChild($row)

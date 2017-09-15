@@ -111,13 +111,21 @@ $row.classList.add('row')
 /* returns the table of info for each product description*/
 function renderDetails(product){
   var $exit = document.createElement('div')
-  $exit.textContent =  'Exit'
+
   $exit.classList.add('exit')
   $exit.addEventListener('click', function(){
-    document.body.classList.remove('filter')
+    $container.classList.remove('filter')
     $exit.classList.remove('exit')
     $exit.innerHTML = ''
   })
+  var $exitButton = document.createElement('button')
+  $exitButton.classList.add('btn','btn-default', 'exit-btn')
+  $exitButton.textContent =  'X'
+
+  var $addButton = document.createElement('button')
+  $addButton.classList.add('btn', 'btn-default', 'add-button')
+  $addButton.textContent = 'Add To Cart'
+
 
   var $details = document.createElement('div')
 
@@ -155,7 +163,9 @@ function renderDetails(product){
   var $ammountContent = document.createElement('td')
   $ammountContent.textContent = product.details.ammount
 
+  $exit.appendChild($exitButton)
   $exit.appendChild($details)
+  $exit.appendChild($addButton)
   $details.appendChild($table)
   $table.appendChild($row)
   $row.appendChild($originCell)
@@ -195,6 +205,7 @@ function renderProduct(product){
   $info.classList.add('disappear', 'info-button', 'btn', 'btn-default')
   $info.textContent = btnName
   $info.addEventListener('click', function(){
+    $container.classList.add('filter')
     document.body.appendChild(renderDetails(product))
   })
 

@@ -15,7 +15,7 @@ var products = [
   price:15.95,
   imgSrc:'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?h=350&auto=compress&cs=tinysrgb',
   details: {
-    origin:'Bogota, Colomiba',
+    origin:'Bogota, Colombia',
     description: 'A mild, well balanced bean for all types of cofffee lovers.',
     aroma:'Caramel, Nuts, Butter',
     ammount: '1 lbs'

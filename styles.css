@@ -55,6 +55,8 @@ table {
   margin: 0 auto;
   padding: 5px;
   text-align: center;
+  background-color: white;
+  color: black;
 }
 
 tr {
@@ -68,14 +70,35 @@ td {
 
 .exit {
   position: absolute;
-  bottom: 1000px;
+  bottom: 50%;
   left: 20%;
   width: 60%;
   text-align: center;
-  background: white;
+  color: black;
+  background-color: lightgray;
   border: 1px solid black;
   border-radius: 0.3em;
   padding-top: 20px;
   padding-bottom: 20px;
   box-shadow: 10px 5px 5px black;
+}
+
+.filter {
+  background-color: white;
+  opacity: 0.5;
+}
+
+.exit-btn {
+  position: relative;
+  float: right;
+  right: 10%;
+  background-color: #ff6800;
+  color: white;
+}
+
+.add-button {
+  position: relative;
+  margin-top: 20px;
+  background-color: black;
+  color: white;
 }

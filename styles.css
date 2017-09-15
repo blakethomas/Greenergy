@@ -116,3 +116,9 @@ td {
   margin-bottom: 25px;
   font-family: 'Raleway', sans-serif;
 }
+
+.pop-out-cart {
+  position: relative;
+  background-color: black;
+  color: white;
+}

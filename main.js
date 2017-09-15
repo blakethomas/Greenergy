@@ -7,8 +7,7 @@ var products = [
     origin:'Addis Abada, Ethiopia',
     description: 'Has a strong kick and keeps you up all morining.',
     aroma:'Chesnuts, Dark Chocolate, Tobacco',
-    ammount: '1 lbs',
-    price:12.95
+    ammount: '1 lbs'
   },
 },
 {
@@ -19,8 +18,7 @@ var products = [
     origin:'Bogota, Colomiba',
     description: 'A mild, well balanced bean for all types of cofffee lovers.',
     aroma:'Caramel, Nuts, Butter',
-    ammount: '1 lbs',
-    price: 15.95
+    ammount: '1 lbs'
   }
 },
 {
@@ -31,8 +29,7 @@ var products = [
     origin:'Florence, Italy',
     description: 'A machine made to satisfy all your espresso needs.',
     aroma:'N/A',
-    ammount: '1 Unit',
-    price:1999.95
+    ammount: '1 Unit'
   }
 },
 {
@@ -43,8 +40,7 @@ var products = [
     origin:'Ho Chi Minh, Vietnam',
     description: 'A bold, caffeine filled bean that is for experienced coffee drinkers',
     aroma:'Toffee, Hazelnut',
-    ammount: '1 lbs',
-    price:12.95
+    ammount: '1 lbs'
   }
 },
 {
@@ -55,8 +51,7 @@ var products = [
     origin:'Kawaii, Hawaii',
     description: 'A kona blend for those who love that traditional Hawaiian taste.',
     aroma:'Caramel, Cashew',
-    ammount: '1 lbs',
-    price:14.95
+    ammount: '1 lbs'
   }
 },
 {
@@ -67,8 +62,7 @@ var products = [
     origin:'Kingston, Jamaica',
     description: 'A delicious bean, complimented by perfect herbal flavor notes.',
     aroma:'Herbal',
-    ammount: '1 lbs',
-    price:16.95
+    ammount: '1 lbs'
   }
 },
 {
@@ -79,8 +73,7 @@ var products = [
     origin:'Nice, France',
     description: 'A machine made for the ultimate cup of joe.',
     aroma:'N/A',
-    ammount: '1 Unit',
-    price:99.95
+    ammount: '1 Unit'
   }
 },
 {
@@ -91,8 +84,7 @@ var products = [
     origin:'Los Angeles, United States',
     description: 'A contraption for making coffee with cold water.',
     aroma:'N/A',
-    ammount: '1 Unit',
-    price:49.95
+    ammount: '1 Unit'
   }
 },
 {
@@ -103,10 +95,9 @@ var products = [
     origin:'Philadelphia, United States',
     description: 'A machine made that does all the work for you.',
     aroma:'N/A',
-    ammount: '1 Unit',
-    price:399.95
+    ammount: '1 Unit'
   }
-},
+}
 ]
 
 var btnName = "View Details"
@@ -119,9 +110,50 @@ $row.classList.add('row')
 
 var cart = []
 
+var $cart = document.createElement('div')
+var $cartTable = document.createElement('table')
+var $priceRow = document.createElement('tr')
+var $priceName = document.createElement('td')
+var $totalPrice = document.createElement('td')
+
+$priceName.textContent = 'Price:  '
+
 var counter = 0
 
+var priceHolder = 0
+
 var $cartIcon = document.querySelector(".cart")
+
+$cartIcon.addEventListener('click', function(){
+  $cart.classList.toggle('disappear')
+})
+
+
+/*returns HTML version of the cart*/
+function renderCart(product){
+
+  var $cartRow = document.createElement('tr')
+  var $itemCount =document.createElement('td')
+  var $cartItem = document.createElement('td')
+  $cartItem.textContent = null
+  $itemCount.textContent = 1
+  $totalPrice.textContent = Math.round(priceHolder)
+
+  $cart.classList.add('card', 'pop-out-cart', 'disappear')
+
+  $cartItem.textContent = $cartItem.textContent + product.name
+
+  $cartIcon.appendChild($cart)
+  $cart.appendChild($cartTable)
+  $cartTable.appendChild($cartRow)
+  $cartTable.appendChild($priceRow)
+  $priceRow.appendChild($priceName)
+  $priceRow.appendChild($totalPrice)
+  $cartRow.appendChild($itemCount)
+  $cartRow.appendChild($cartItem)
+
+  return $cart
+}
 
 /* returns the table of info for each product description*/
 function renderDetails(product){
@@ -144,6 +176,9 @@ function renderDetails(product){
     cart.push(product)
     counter ++
     $cartIcon.textContent =  '      ' + counter
+    priceHolder = priceHolder + product.price
+    renderCart(product)
+    $cart.classList.add('disappear')
   })
 
   var $details = document.createElement('div',)

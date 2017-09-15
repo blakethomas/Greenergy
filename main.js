@@ -100,15 +100,17 @@ var products = [
 }
 ]
 
-var btnName = "View Details"
+var counter = 0
+
+var priceHolder = 0
+
+var cart = []
 
 var $container = document.createElement('div')
 $container.classList.add('container')
 
 var $row = document.createElement('row')
 $row.classList.add('row')
-
-var cart = []
 
 var $cart = document.createElement('div')
 var $cartTable = document.createElement('table')
@@ -118,9 +120,6 @@ var $totalPrice = document.createElement('td')
 
 $priceName.textContent = 'Price:  '
 
-var counter = 0
-
-var priceHolder = 0
 
 var $cartIcon = document.querySelector(".cart")
 
@@ -135,12 +134,11 @@ function renderCart(product){
   var $cartRow = document.createElement('tr')
   var $itemCount =document.createElement('td')
   var $cartItem = document.createElement('td')
-  $cartItem.textContent = null
+
   $itemCount.textContent = 1
-  $totalPrice.textContent = Math.round(priceHolder)
-
+  $totalPrice.textContent = '$ ' + Math.round(priceHolder)
   $cart.classList.add('card', 'pop-out-cart', 'disappear')
-
+  $cartItem.textContent = null
   $cartItem.textContent = $cartItem.textContent + product.name
 
   $cartIcon.appendChild($cart)
@@ -268,7 +266,7 @@ function renderProduct(product){
 
   var $info = document.createElement('button')
   $info.classList.add('disappear', 'info-button', 'btn', 'btn-default')
-  $info.textContent = btnName
+  $info.textContent = 'View Details'
   $info.addEventListener('click', function(){
     $container.classList.add('filter')
     document.body.appendChild(renderDetails(product))

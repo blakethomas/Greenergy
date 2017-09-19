@@ -123,6 +123,16 @@ var $priceName = document.createElement('td')
 var $totalPrice = document.createElement('td')
 var $checkoutCell = document.createElement('td')
 var $checkoutButton = document.createElement('button')
+var $checkoutScreen = document.createElement('div')
+var $checkoutTitle = document.createElement('h2')
+var $completePurchase = document.createElement('button')
+var $purchaseForm = document.createElement('form')
+var $nameInput = document.createElement('input')
+var $emailInput = document.createElement('input')
+var $addressInput = document.createElement('input')
+var $phoneInput =  document.createElement('input')
+var $cardInput = document.createElement('input')
+var $expirationInput = document.createElement('input')
 
 $exit.classList.add('card', 'row', 'mb-5', 'border-0')
 $cartTable.classList.add('table', 'p-2', 'border-0')
@@ -132,6 +142,24 @@ $priceName.classList.add('pt-4', 'text-center')
 $totalPrice.classList.add('text-center', 'pt-4')
 $checkoutButton.textContent = 'Checkout'
 $checkoutButton.classList.add('btn', 'btn-default')
+$checkoutScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up')
+$checkoutTitle.textContent = 'Checkout'
+$checkoutTitle.classList.add('card-title')
+$completePurchase.textContent = 'Complete Purchase'
+$completePurchase.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3')
+
+makeForms($nameInput)
+nameForms($nameInput, 'Name')
+makeForms($emailInput)
+nameForms($emailInput, 'Email')
+makeForms($addressInput)
+nameForms($addressInput, 'Address')
+makeForms($phoneInput)
+nameForms($phoneInput, 'Phone #')
+makeForms($cardInput)
+nameForms($cardInput, 'Card #')
+makeForms($expirationInput)
+nameForms($expirationInput, 'Expiration Date')
 
 var $cartIcon = document.querySelector(".fa-shopping-cart")
 $cartIcon.classList.add('black', 'p-1')
@@ -140,7 +168,30 @@ $cartIcon.addEventListener('click', function(){
   $cart.classList.toggle('disappear')
 })
 
+$checkoutButton.addEventListener('click', function(){
+  $container.classList.add('filter')
+  document.body.appendChild($checkoutScreen)
+  $checkoutScreen.appendChild($checkoutTitle)
+  $checkoutScreen.appendChild($cartTable)
+  $checkoutCell.innerHTML = ''
+  $purchaseForm.appendChild($nameInput)
+  $purchaseForm.appendChild($emailInput)
+  $purchaseForm.appendChild($addressInput)
+  $purchaseForm.appendChild($phoneInput)
+  $purchaseForm.appendChild($cardInput)
+  $purchaseForm.appendChild($expirationInput)
+  $checkoutScreen.appendChild($purchaseForm)
+  $checkoutScreen.appendChild($completePurchase)
+})
 
+
+function makeForms (input){
+  return input.setAttribute('type', 'text')
+}
+
+function nameForms(input, name){
+  return input.setAttribute('placeholder', name)
+}
 /*returns HTML version of the cart*/
 function renderCart(product){
 
@@ -173,7 +224,6 @@ function renderCart(product){
   $cartItem.textContent = $cartItem.textContent + product.name
   $removeButton.classList.add('btn', 'btn-default', 'text-center')
   $removeButton.textContent = 'Remove'
-
 
   $cartIcon.appendChild($cart)
   $cart.appendChild($cartTable)

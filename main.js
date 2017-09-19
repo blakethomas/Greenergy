@@ -107,7 +107,7 @@ var priceHolder = 0
 var cart = []
 
 var $circleIcon = document.createElement('i')
-$circleIcon.classList.add('fa', 'fa-circle')
+$circleIcon.classList.add('fa', 'fa-circle', 'pl-2')
 
 var $container = document.createElement('div')
 $container.classList.add('container')
@@ -121,14 +121,17 @@ var $cartTable = document.createElement('table')
 var $priceRow = document.createElement('tr')
 var $priceName = document.createElement('td')
 var $totalPrice = document.createElement('td')
-var $spaceHolder = document.createElement('td')
+var $checkoutCell = document.createElement('td')
+var $checkoutButton = document.createElement('button')
 
 $exit.classList.add('card', 'row', 'mb-5', 'border-0')
-$cartTable.classList.add('table')
+$cartTable.classList.add('table', 'p-2', 'border-0')
 $priceRow.setAttribute('scope', 'row')
-$spaceHolder.textContent = ''
-$priceName.textContent = 'Price:  '
-
+$priceName.textContent = 'Total Price:'
+$priceName.classList.add('pt-4', 'text-center')
+$totalPrice.classList.add('text-center', 'pt-4')
+$checkoutButton.textContent = 'Checkout'
+$checkoutButton.classList.add('btn', 'btn-default')
 
 var $cartIcon = document.querySelector(".fa-shopping-cart")
 $cartIcon.classList.add('black', 'p-1')
@@ -148,8 +151,9 @@ function renderCart(product){
   var $removeButton = document.createElement('button')
 
   $cartItem.classList.add('pt-4')
-  $itemCount.classList.add('pt-4')
+  $itemCount.classList.add('pt-4', 'text-center')
   $cartRow.setAttribute('scope', 'row')
+
 
 /*Listens for removal of items*/
   $removeButton.addEventListener('click', function(){
@@ -167,7 +171,7 @@ function renderCart(product){
   $cart.classList.add('card', 'pop-out-cart', 'disappear')
   $cartItem.textContent = null
   $cartItem.textContent = $cartItem.textContent + product.name
-  $removeButton.classList.add('btn', 'btn-default')
+  $removeButton.classList.add('btn', 'btn-default', 'text-center')
   $removeButton.textContent = 'Remove'
 
 
@@ -175,32 +179,32 @@ function renderCart(product){
   $cart.appendChild($cartTable)
   $cartTable.appendChild($cartRow)
   $cartTable.appendChild($priceRow)
-  $priceRow.appendChild($spaceHolder)
   $priceRow.appendChild($priceName)
   $priceRow.appendChild($totalPrice)
   $cartRow.appendChild($itemCount)
   $cartRow.appendChild($cartItem)
   $cartRow.appendChild($removeHolder)
   $removeHolder.appendChild($removeButton)
-
+  $priceRow.appendChild($checkoutCell)
+  $checkoutCell.appendChild($checkoutButton)
   return $cart
 }
 
 /* returns the table of info for each product description*/
 function renderDetails(product){
 
-  $exit.classList.add('card', 'text-center', 'rounded', 'mx-auto', 'w-50', 'move-up', 'black')
+  $exit.classList.add('card', 'text-center', 'rounded', 'mx-auto', 'w-50', 'move-up', 'black', 'col-xs-12')
   $exit.addEventListener('click', function(){
     $container.classList.remove('filter')
     $exit.classList.remove('exit', 'card')
     $exit.innerHTML = ''
   })
   var $exitButton = document.createElement('button')
-  $exitButton.classList.add('btn','btn-default', 'exit-btn')
+  $exitButton.classList.add('btn','btn-default', 'exit-btn', 'float-right', 'mr-3')
   $exitButton.textContent =  'X'
 
   var $addButton = document.createElement('button')
-  $addButton.classList.add('btn', 'btn-default', 'add-button', 'mt-3')
+  $addButton.classList.add('btn', 'btn-default', 'add-button', 'mt-3', 'mr-4')
   $addButton.textContent = 'Add To Cart'
 
 /*Listens for the add to cart button*/
@@ -219,9 +223,10 @@ function renderDetails(product){
 
   var $title = document.createElement('h2')
   $title.textContent = product.name
-  $title.classList.add('card-title')
+  $title.classList.add('card-title', 'ml-5')
 
   var $table = document.createElement('table')
+  $table.classList.add('ml-4', 'p-2', 'border-0')
 
   var $row = document.createElement('tr')
   $row.setAttribute('scope', 'row')
@@ -258,7 +263,7 @@ function renderDetails(product){
 
   var $price = document.createElement('p')
   $price.textContent =  'Price: ' + product.price
-  $price.classList.add('details-price', 'card-text')
+  $price.classList.add('details-price', 'card-text', 'mr-3')
 
   $exit.appendChild($details)
   $details.appendChild($exitButton)

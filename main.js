@@ -107,7 +107,7 @@ var priceHolder = 0
 var cart = []
 
 var $circleIcon = document.createElement('i')
-$circleIcon.classList.add('fa', 'fa-circle', 'pl-2')
+
 
 var $container = document.createElement('div')
 $container.classList.add('container')
@@ -135,9 +135,11 @@ var $cardInput = document.createElement('input')
 var $expirationInput = document.createElement('input')
 var $exitCheckout = document.createElement('button')
 var $btnRow = document.createElement('div')
+var $conirmationScreen = document.createElement('div')
+var $confirmationMessage = document.createElement('p')
 
 $btnRow.classList.add('row')
-$exitCheckout.classList.add('btn', 'btn-default', 'w-30', 'mx-auto')
+$exitCheckout.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3', 'ml-0')
 $exitCheckout.textContent = 'Close'
 $exit.classList.add('card', 'row', 'mb-5', 'border-0')
 $cartTable.classList.add('table', 'p-2', 'border-0')
@@ -151,7 +153,10 @@ $checkoutScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up
 $checkoutTitle.textContent = 'Checkout'
 $checkoutTitle.classList.add('card-title')
 $completePurchase.textContent = 'Complete Purchase'
-$completePurchase.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3')
+$completePurchase.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3', 'mr-0')
+$conirmationScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up')
+$confirmationMessage.classList.add('text-center')
+$confirmationMessage.textContent = 'Thanks for your purchase!'
 
 makeForms($nameInput)
 nameForms($nameInput, 'Name')
@@ -174,6 +179,7 @@ $cartIcon.addEventListener('click', function(){
 })
 
 $checkoutButton.addEventListener('click', function(){
+  $checkoutScreen.classList.remove('disappear')
   $container.classList.add('filter')
   document.body.appendChild($checkoutScreen)
   $checkoutScreen.appendChild($checkoutTitle)
@@ -186,9 +192,18 @@ $checkoutButton.addEventListener('click', function(){
   $purchaseForm.appendChild($cardInput)
   $purchaseForm.appendChild($expirationInput)
   $checkoutScreen.appendChild($purchaseForm)
-
-  $checkoutScreen.appendChild($completePurchase)
-  $checkoutScreen.appendChild($exitCheckout)
+  $checkoutScreen.appendChild($btnRow)
+  $btnRow.appendChild($completePurchase)
+  $btnRow.appendChild($exitCheckout)
+  $exitCheckout.addEventListener('click', function(){
+    $checkoutScreen.classList.add('disappear')
+    $container.classList.remove('filter')
+  })
+  $completePurchase.addEventListener('click', function(){
+    $checkoutScreen.classList.add('disappear')
+    $conirmationScreen.appendChild($confirmationMessage)
+    document.body.appendChild($conirmationScreen)
+  })
 })
 
 
@@ -269,6 +284,7 @@ function renderDetails(product){
     cart.push(product)
     counter ++
     priceHolder = priceHolder + product.price
+    $circleIcon.classList.add('fa', 'fa-circle', 'pl-2')
     $cartIcon.appendChild($circleIcon)
     renderCart(product)
     $cart.classList.add('disappear')

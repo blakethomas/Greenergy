@@ -137,6 +137,8 @@ var $exitCheckout = document.createElement('button')
 var $btnRow = document.createElement('div')
 var $conirmationScreen = document.createElement('div')
 var $confirmationMessage = document.createElement('p')
+var $emailMessage = document.createElement('p')
+var $confirmationClose = document.createElement('button')
 
 $btnRow.classList.add('row')
 $exitCheckout.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3', 'ml-0')
@@ -154,9 +156,13 @@ $checkoutTitle.textContent = 'Checkout'
 $checkoutTitle.classList.add('card-title')
 $completePurchase.textContent = 'Complete Purchase'
 $completePurchase.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3', 'mr-0')
-$conirmationScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up')
+$conirmationScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up', 'product', 'black')
 $confirmationMessage.classList.add('text-center')
 $confirmationMessage.textContent = 'Thanks for your purchase!'
+$emailMessage.textContent = 'You will recieve a verification shortly on your provided email.'
+$emailMessage.classList.add('text-center')
+$confirmationClose.textContent = 'Close'
+$confirmationClose.classList.add('btn', 'btn-default', 'text-center','w-30', 'mx-auto')
 
 makeForms($nameInput)
 nameForms($nameInput, 'Name')
@@ -180,6 +186,8 @@ $cartIcon.addEventListener('click', function(){
 
 $checkoutButton.addEventListener('click', function(){
   $checkoutScreen.classList.remove('disappear')
+  $checkoutScreen.classList.add('black')
+  $cartTable.classList.add('black')
   $container.classList.add('filter')
   document.body.appendChild($checkoutScreen)
   $checkoutScreen.appendChild($checkoutTitle)
@@ -202,10 +210,30 @@ $checkoutButton.addEventListener('click', function(){
   $completePurchase.addEventListener('click', function(){
     $checkoutScreen.classList.add('disappear')
     $conirmationScreen.appendChild($confirmationMessage)
+    $conirmationScreen.appendChild($emailMessage)
+    $conirmationScreen.appendChild($confirmationClose)
     document.body.appendChild($conirmationScreen)
+    $conirmationScreen.classList.remove('disappear')
+    $confirmationClose.addEventListener('click', function(){
+      $conirmationScreen.classList.add('disappear')
+      $cartTable.classList.remove('black')
+      $cartTable.textContent = ''
+      $container.classList.remove('filter')
+      clearCart()
+    })
   })
 })
 
+function clearCart(){
+  counter = 0
+  priceHolder = 0
+  for(var i; i < cart.length; i++){
+
+    cart.pop[i]
+  }
+  $circleIcon.classList.remove('fa', 'fa-circle', 'pl-2')
+  return
+}
 
 function makeForms (input){
   return input.setAttribute('type', 'text')
@@ -235,7 +263,7 @@ function renderCart(product){
     priceHolder = priceHolder - product.price
     $totalPrice.textContent = Math.round(priceHolder)
     if(counter === 0){
-      $circleIcon.classList.remove('fa', 'fa-circle')
+      $circleIcon.classList.remove('fa', 'fa-circle', 'pl-2')
     }
   })
 

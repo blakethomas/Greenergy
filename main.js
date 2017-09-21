@@ -157,12 +157,12 @@ $checkoutTitle.classList.add('card-title')
 $completePurchase.textContent = 'Complete Purchase'
 $completePurchase.classList.add('btn', 'btn-default', 'w-30', 'mx-auto', 'mt-3', 'mb-3', 'mr-0')
 $conirmationScreen.classList.add('card', 'w-50', 'text-center', 'mx-auto', 'move-up', 'product', 'black')
-$confirmationMessage.classList.add('text-center')
+$confirmationMessage.classList.add('text-center', 'pt-3')
 $confirmationMessage.textContent = 'Thanks for your purchase!'
 $emailMessage.textContent = 'You will recieve a verification shortly on your provided email.'
-$emailMessage.classList.add('text-center')
+$emailMessage.classList.add('text-center', 'pb-3')
 $confirmationClose.textContent = 'Close'
-$confirmationClose.classList.add('btn', 'btn-default', 'text-center','w-30', 'mx-auto')
+$confirmationClose.classList.add('btn', 'btn-default', 'text-center','w-30', 'mx-auto', 'mb-3')
 
 makeForms($nameInput)
 nameForms($nameInput, 'Name')
@@ -255,7 +255,7 @@ function renderCart(product){
   $itemCount.classList.add('pt-4', 'text-center')
   $cartRow.setAttribute('scope', 'row')
 
-  
+
   /*Listens for removal of items*/
   $removeButton.addEventListener('click', function(){
     $cartRow.textContent = ''

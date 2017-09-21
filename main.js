@@ -255,7 +255,7 @@ function renderCart(product){
   $itemCount.classList.add('pt-4', 'text-center')
   $cartRow.setAttribute('scope', 'row')
 
-
+  
   /*Listens for removal of items*/
   $removeButton.addEventListener('click', function(){
     $cartRow.textContent = ''

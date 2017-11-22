@@ -1,34 +1,24 @@
 .logo {
   font-family: 'Lobster', cursive;
   color: #ff6800;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .product {
   font-family: 'Raleway', sans-serif;
-  text-align: center;
-  padding-top: 6px;
 }
 
 .price {
-  position: relative;
-  left: 25%;
-  width: 50%;
-  text-align: center;
   font-family: 'Raleway', sans-serif;
-  border-top: 1px solid lightgray;
-  padding-top: 4px;
 }
 
-.cart {
-  position: relative;
-  float: right;
-  bottom: 46px;
-  right: 10%;
-  padding: 6px;
-  background-color: black;
-  color: white;
+.move-up {
+  position: absolute;
+  right: 25%;
+  top: 25%;
+}
+
+div .card .pop-out-cart {
+  background-color: white;
 }
 
 .logo-icon {
@@ -40,7 +30,7 @@
   display: inline-block;
   position: absolute;
   top: 180px;
-  left: 37.5%;
+  left: 34.5%;
 }
 
 .disappear {
@@ -48,37 +38,23 @@
 }
 
 table {
-  position: relative;
-  border: 1px solid black;
-  margin: 0 auto;
-  padding: 5px;
-  text-align: center;
   background-color: white;
   color: black;
 }
 
 tr {
-  border: 1px solid black;
+  border-top: 1px solid gray;
   font-family: 'Raleway', sans-serif;
 }
 
 td {
-  border: 1px solid black;
   padding: 5px;
   font-family: 'Raleway', sans-serif;
 }
 
 .exit {
-  position: absolute;
-  bottom: 50%;
-  left: 25%;
-  width: 50%;
   color: black;
   background-color: #cfb093;
-  border: 3px solid black;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  box-shadow: 8px 5px 5px gray;
 }
 
 .filter {
@@ -87,39 +63,23 @@ td {
 }
 
 .exit-btn {
-  position: relative;
-  float: right;
-  right: 10%;
   background-color: #ff6800;
   color: white;
 }
 
-.add-button {
-  position: relative;
-  background-color: black;
-  color: white;
-}
-
 .details-price {
-  position: relative;
-  margin-top: 20px;
   font-family: 'Raleway', sans-serif;
 }
 
 .card-title {
-  position: relative;
-  left: 3%;
-  margin-bottom: 25px;
   font-family: 'Raleway', sans-serif;
-}
-
-.pop-out-cart {
-  position: relative;
-  background-color: black;
-  color: white;
 }
 
 .fa-circle {
   font-size: 50%;
-  padding-left: 10px;
+}
+
+.black {
+  background-color: black;
+  color: white;
 }
